@@ -1,10 +1,14 @@
 package models;
 
 public class Squad {
-    public Squad(){
+    private String name;
+
+    public Squad(String name, String cause, int maxSize) {
+        this.name=name;
 
     }
 
-    public Squad(String name, String cause, int maxSize) {
+    public String getName() {
+        return name;
     }
 }

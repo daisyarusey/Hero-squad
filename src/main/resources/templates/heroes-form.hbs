@@ -1,0 +1,58 @@
+
+
+{{#partial "styles"}}
+    <link rel='stylesheet' href='/css/styles.css'>
+{{/partial}}
+
+{{#partial "content"}}
+    {{#if editHero}}
+        <h1>Edit your Hero's entries!</h1>
+        <form action="/heroes/{{editHero.id}}/update" method="post" class="form-group">
+
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" value="{{editHero.name}}" class="form-control"><br>
+
+            <label for="age">Age</label>
+            <input id="age" name="age" type="text" value="{{editHero.age}}"class="form-control"><br>
+
+            <label for="power">Powers</label>
+            <input id="specialPowers" name="power" type="text" value="{{editHero.powers}}" class="form-control"><br>
+
+            <label for="weakness">Weakness</label>
+            <input id="weakness" name="weakness" type="text" value="{{editHero.weakness}}" class="form-control"><br>
+
+            <button type="submit" class="btn btn-default" >Update Hero</button>
+        </form>
+    {{else}}
+
+        <h1>Add Hero!</h1>
+
+
+        <form action="/heroes" method="POST" class="form-group form">
+            <div class="md-form">
+                <label id="h1-1" for="name">Name</label>
+                <input id="name" name="name" type="text" class="form-control" required>
+            </div>
+            <div class="md-form">
+                <label id="h1-1" for="age">Age</label>
+                <input id="age" name="age" type="text" class="form-control" required><br>
+            </div>
+            <div class="md-form">
+                <label id="h1-1" for="power">Power</label>
+                <input id="power" name="power" type="text" class="form-control" required>
+            </div>
+            <div class="md-form">
+                <label id="h1-1" for="weakness">Weakness</label>
+                <input id="weakness" name="weakness" type="text" class="form-control" required>
+            </div>
+            <button type="submit"  class="btn mdb-color darken-3 animated  infinite btn-1">Add Hero</button>
+        </form>
+
+        </div>
+
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
+
+

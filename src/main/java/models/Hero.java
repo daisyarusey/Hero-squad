@@ -1,12 +1,39 @@
 package models;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 public class Hero {
+    private  String power;
     private  int age;
     private String name;
+    private String weakness;
+    private static ArrayList<Hero> instances = new ArrayList<>();
+    private int id;
+    private LocalDateTime createdAt;
 
     public Hero(String name, int age, String power, String weakness) {
         this.name=name;
         this.age=age;
+        this.power= power;
+        this.weakness=weakness;
+        this.createdAt = LocalDateTime.now();
+        instances.add(this);
+        this.id =instances.size();
+    }
+
+
+
+
+    public static ArrayList<Hero> getAll() {
+        return instances;
+    }
+    public  static void clearAllHeroes(){
+        instances.clear();;
+    }
+
+    public static Hero findById(int id) {
+        return instances.get(id-1);
     }
 
     public String getName() {
@@ -15,5 +42,30 @@ public class Hero {
 
     public int getAge() {
         return age;
+    }
+    public int getId() {
+        return id;
+    }
+
+
+    public String getPower() {
+        return power;
+    }
+
+    public String getWeakness() {
+        
+        return weakness;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void deleteHero() {
+        instances.remove(id-1);
+    }
+
+
+    public void update(String newContent) {
     }
 }

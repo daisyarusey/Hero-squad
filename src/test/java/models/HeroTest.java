@@ -17,19 +17,34 @@ public class HeroTest {
     }
     @Test
     public void NewHeroObjectGetsCorrectlyCreated_true() throws Exception {
-        Hero hero = new Hero("Luke Cage",30,"Bullet proof","emotional");
-        assertTrue(true);
+        Hero hero= setupNewHero();
+        assertTrue(String.valueOf(true),hero instanceof Hero);
     }
 
     @Test
     public void HeroInstantiatesWithName_true() throws Exception {
-        Hero hero = new Hero("Luke Cage",30,"Bullet proof","emotional");
+        Hero hero = setupNewHero();
         assertEquals("Luke Cage", hero.getName());
-
     }
     @Test
     public void HeroInstantiatesWithAge_true() throws Exception {
-        Hero hero = new Hero("Luke Cage", 30, "Bullet proof", "emotional");
+       Hero hero = setupNewHero();
         assertEquals(30, hero.getAge());
+    }
+
+    @Test
+    public void HeroInstantiatesWithPower_true() throws Exception {
+        Hero hero = setupNewHero();
+        assertEquals("Bullet proof", hero.getPower());
+    }
+
+    @Test
+    public void HeroInstantiatesWithWeakness_true() throws Exception {
+        Hero hero = setupNewHero();
+        assertEquals("emotional", hero.getWeakness());
+
+    }
+    public Hero setupNewHero(){
+        return new Hero("Luke Cage",30,"Bullet proof","emotional");
     }
 }

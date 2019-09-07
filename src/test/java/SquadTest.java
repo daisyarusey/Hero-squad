@@ -17,6 +17,11 @@ public class SquadTest {
     @Test
     public void squad_instantiates_Correctly_true(){
         Squad squad = new Squad("Inked Sisters","Ladies riding motorcycles",12);
-        assertTrue(squad instanceof Squad);
+        assertTrue(true);
+    }
+    @Test
+    public void squad_getsName_String(){
+        Squad squad = new Squad("Inked Sisters","Ladies riding motorcycles",12);
+        assertEquals("Inked Sisters", squad.getName());
     }
 }

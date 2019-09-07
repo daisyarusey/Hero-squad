@@ -8,7 +8,6 @@ public class Hero {
     private  int age;
     private String name;
     private String weakness;
-    private static ArrayList<Hero> instances = new ArrayList<>();
     private int id;
     private LocalDateTime createdAt;
 
@@ -18,23 +17,10 @@ public class Hero {
         this.power= power;
         this.weakness=weakness;
         this.createdAt = LocalDateTime.now();
-        instances.add(this);
-        this.id =instances.size();
+
     }
 
 
-
-
-    public static ArrayList<Hero> getAll() {
-        return instances;
-    }
-    public  static void clearAllHeroes(){
-        instances.clear();;
-    }
-
-    public static Hero findById(int id) {
-        return instances.get(id-1);
-    }
 
     public String getName() {
         return name;
@@ -60,10 +46,7 @@ public class Hero {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
-    public void deleteHero() {
-        instances.remove(id-1);
-    }
+    
 
 
     public void update(String newContent) {

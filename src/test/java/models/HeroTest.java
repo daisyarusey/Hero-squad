@@ -27,4 +27,9 @@ public class HeroTest {
         assertEquals("Luke Cage", hero.getName());
 
     }
+    @Test
+    public void HeroInstantiatesWithAge_true() throws Exception {
+        Hero hero = new Hero("Luke Cage", 30, "Bullet proof", "emotional");
+        assertEquals(30, hero.getAge());
+    }
 }

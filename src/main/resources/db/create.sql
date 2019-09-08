@@ -8,3 +8,11 @@ CREATE TABLE IF NOT EXISTS heroes (
   weakness VARCHAR
 
 );
+
+CREATE TABLE IF NOT EXISTS squads (
+  id int PRIMARY KEY auto_increment,
+  name VARCHAR,
+  maxSize int,
+  cause VARCHAR
+
+);

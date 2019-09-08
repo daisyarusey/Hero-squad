@@ -5,7 +5,7 @@
     {{#if heroes}}
         {{#each heroes }}
 
-            <p>{{ name }} <a href="/heroes/{{id}}">view hero...</a></p>
+            <p>{{ hero.name }} <a href="/heroes/{{id}}">view hero...</a></p>
         {{/each}}
     {{else}}
         <p>No Heroes!</p>

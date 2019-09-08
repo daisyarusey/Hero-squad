@@ -15,13 +15,13 @@ public class Sql2oHeroDao implements HeroDao {
 
     @Override
     public void add(Hero hero) {
-        String sql = "INSERT INTO heroes (name,age,power,weakness) VALUES (':name',:age,':power',':weakness')";
+        String sql = "INSERT INTO heroes (name,age,power,weakness,squadId) VALUES (':name',:age,':power',':weakness',:squadId)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(hero)
                     .executeUpdate()
-                    .getKey();
-            hero.setId(id);
+                    .getKey();//int id is now the row number (row “key”) of db
+            hero.setId(id); //update object to set id now from database
         }catch (Sql2oException ex){
             System.out.println(ex);
         }

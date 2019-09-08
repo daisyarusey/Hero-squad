@@ -1,9 +1,18 @@
 package models;
 
 import java.time.LocalDateTime;
+import  java.util.ArrayList;
 import java.util.Objects;
 
 public class Hero {
+    private  String power;
+    private  int age;
+    private String name;
+    private String weakness;
+    private int id;
+    private LocalDateTime createdAt;
+    private int squadId;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -22,13 +31,6 @@ public class Hero {
         return Objects.hash(power, age, name, weakness, id, createdAt);
     }
 
-    private  String power;
-    private  int age;
-    private String name;
-    private String weakness;
-    private int id;
-    private LocalDateTime createdAt;
-    private int squadId;
 
     public Hero(String name, int age, String power, String weakness, int squadId) {
         this.name=name;
@@ -72,10 +74,6 @@ public class Hero {
         this.weakness = weakness;
     }
 
-//    @Override
-//    public String toString() {
-//        return super.toString();
-//    }
 
     public String getName() {
         return name;

@@ -11,6 +11,9 @@ public class Squad {
 
 
     public Squad(String name, int maxSize, String cause) {
+        this.name =name;
+        this.maxSize=maxSize;
+        this.cause=cause;
     }
 
     public void setId(int id) {

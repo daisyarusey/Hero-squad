@@ -54,7 +54,7 @@ public class Sql2oSquadDaoTest {
     public void addedSquadsAreReturnedFromGetAll() throws Exception {
         Squad squad = setupNewSquad();
         squadDao.add(squad);
-        assertEquals(0, squadDao.getAll().size());
+        assertEquals(1, squadDao.getAll().size());
     }
 
     @Test
@@ -87,16 +87,16 @@ public class Sql2oSquadDaoTest {
         Squad squad = setupNewSquad();
         squadDao.add(squad);
         int squadId = squad.getId();
-        Hero newHero = new Hero("Iron Fist",50,"glowing fist","weak",0);
-        Hero otherHero = new Hero("Iron Fist",50,"glowing fist","weak",0);
-        Hero thirdHero = new Hero("Iron Fist",50,"glowing fist","weak",0);
+        Hero newHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
+        Hero otherHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
+        Hero thirdHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
         heroDao.add(newHero);
-        heroDao.add(otherHero); //we are not adding task 3 so we can test things precisely.
-        assertEquals(0, squadDao.getAllHeroesBySquad(squadId).size());
-        assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHero));
-        assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHero));
-        assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHero)); //things are accurate!
-    }
+        heroDao.add(otherHero);
+        assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
+       assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHero));
+  assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHero));
+  assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHero)); //things are accurate!
+}
 
     // helper method
     public Squad setupNewSquad(){

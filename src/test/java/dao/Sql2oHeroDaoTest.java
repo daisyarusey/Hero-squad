@@ -5,7 +5,7 @@ import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 public class Sql2oHeroDaoTest {
-    private Sql2oHeroDao heroDao; //ignore me for now. We'll create this soon.
+    private Sql2oHeroDao heroDao;
     private Connection conn; //must be sql2o class conn
 
     @Before
@@ -26,7 +26,7 @@ public class Sql2oHeroDaoTest {
         Hero hero = setupNewHero();
         int originalHeroId = hero.getId();
         heroDao.add(hero);
-        assertNotEquals(originalHeroId, hero.getId()); //how does this work?
+        assertNotEquals(originalHeroId, hero.getId());
     }
 
     @Test
@@ -56,12 +56,12 @@ public class Sql2oHeroDaoTest {
         heroDao.add(hero);
 
         heroDao.update(hero.getId(),"Luke Cage", 40,"bullet proof","emotional",1);
-        Hero updatedHero = heroDao.findById(hero.getId()); //why do I need to refind this?
+        Hero updatedHero = heroDao.findById(hero.getId());
         assertNotEquals(initialName, updatedHero.getName());
     }
 
     @Test
-    public void deleteByIdDeletesCorrectTask() throws Exception {
+    public void deleteByIdDeletesCorrectHero() throws Exception {
         Hero hero = setupNewHero();
         heroDao.add(hero);
         heroDao.deleteById(hero.getId());
@@ -89,6 +89,6 @@ public class Sql2oHeroDaoTest {
 
 
     public Hero setupNewHero(){
-        return new Hero("Iron Fist",37,"glowing hand","weak", 0);
+        return new Hero("Iron Fist",37,"glowing hand","weak", 1);
 }
 }

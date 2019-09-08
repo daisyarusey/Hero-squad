@@ -2,18 +2,35 @@
 <html>
 <head>
     <title>{{#block "title"}}Hero Squad{{/block}}</title>
-
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
 <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="/">Home</a></li>
-    <li role="presentation"><a href="/heroes/new">Add a New Hero</a></li>
+    <li role="presentation"><a href="/tasks/new">Add a New Hero</a></li>
+
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Squad Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if heroes}}
+                {{#each heroes}}
+                    <li><a href="/heroes/{{id}}">{{name}}</a></li>
+                {{/each}}
+                <li><a href="/heroes/new">Add a Squad</a></li>
+
+            {{else}}
+                <li><a href="/categories/new">Add a Squad</a></li>
+            {{/if}}
+        </ul>
+    </li>
 </ul>
 <div class="container">
     <!--begin main template-->
     <div class="page-header">
-        <h1>Welcome to my Hero Squad. </h1>
+        <h1 class="text-center">Welcome to Hero Squad.</h1>
     </div>
 
     <div class="col-md-12">
@@ -26,9 +43,15 @@
 {{#block "footer"}}
     <footer class="footer">
         <div class="container">
-            <p class="text-muted"><a href="/heroes/delete">DELETE ALL Heroes</a></p>
+            <hr>
+            <p class="text-muted">
+                <a href="/squads/delete">delete all squads & heroes</a><br>
+                <a href="/heroes/delete">delete all heroes</a>
+            </p>
         </div>
     </footer>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </html>
 {{/block}}

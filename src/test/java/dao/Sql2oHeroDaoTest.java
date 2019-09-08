@@ -55,7 +55,7 @@ public class Sql2oHeroDaoTest {
         Hero hero = setupNewHero();
         heroDao.add(hero);
 
-        heroDao.update(hero.getId(),"Luke Cage", 40,"bullet proof","emotional");
+        heroDao.update(hero.getId(),"Luke Cage", 40,"bullet proof","emotional",1);
         Hero updatedHero = heroDao.findById(hero.getId()); //why do I need to refind this?
         assertNotEquals(initialName, updatedHero.getName());
     }
@@ -89,6 +89,6 @@ public class Sql2oHeroDaoTest {
 
 
     public Hero setupNewHero(){
-        return new Hero("Iron Fist",37,"glowing hand","weak", 1);
+        return new Hero("Iron Fist",37,"glowing hand","weak", 0);
 }
 }

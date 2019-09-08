@@ -16,7 +16,7 @@ public class Sql2oSquadDao implements  SquadDao{
 
     @Override
     public void add(Squad squad) {
-        String sql = "INSERT INTO squads (name,maxSize,cause) VALUES (':name',:maxSize,':cause')";
+        String sql = "INSERT INTO squads (name,maxSize,cause) VALUES (:name,:maxSize,:cause)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(squad)
@@ -28,17 +28,6 @@ public class Sql2oSquadDao implements  SquadDao{
         }
     }
 
-    @Override
-    public void deleteById(int id) {
-        String sql = "DELETE from squads WHERE id=:id"; //raw sql
-        try (Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeUpdate();
-        } catch (Sql2oException ex){
-            System.out.println(ex);
-        }
-    }
 
     @Override
     public List<Squad> getAll() {
@@ -73,6 +62,18 @@ public class Sql2oSquadDao implements  SquadDao{
     }
 
     @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from squads WHERE id=:id"; //raw sql
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
     public void clearAllSquads() {
         String sql = "DELETE from squads"; //raw sql
         try (Connection con = sql2o.open()) {
@@ -84,7 +85,7 @@ public class Sql2oSquadDao implements  SquadDao{
     }
 
     @Override
-    public List<Hero> getAllHeroesBySquad(int squadId) {
+    public List<Hero> getAllHeroesBySquad( int squadId) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM heroes WHERE squadId = :squadId")
                     .addParameter("squadId", squadId)

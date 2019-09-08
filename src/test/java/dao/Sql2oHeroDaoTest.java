@@ -41,7 +41,7 @@ public class Sql2oHeroDaoTest {
     public void addedHeroesAreReturnedFromgetAll() throws Exception {
         Hero hero = setupNewHero();
         heroDao.add(hero);
-        assertEquals(0, heroDao.getAll().size());
+        assertEquals(1, heroDao.getAll().size());
     }
 
     @Test

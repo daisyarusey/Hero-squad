@@ -1,6 +1,5 @@
 package models;
 
-import jdk.internal.jline.internal.ShutdownHooks;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,7 +51,7 @@ public class HeroTest {
     @Test
     public void heroesInstantiateWithId() throws Exception {
         Hero hero = setupNewHero();
-        assertEquals(1, hero.getId());
+        assertEquals(0, hero.getId());
     }
 
 
@@ -72,7 +71,7 @@ public class HeroTest {
 
 
     public Hero setupNewHero(){
-        return new Hero("Luke Cage",30,"Bullet proof","emotional");
+        return new Hero("Luke Cage",30,"Bullet proof","emotional",1);
     }
 
 

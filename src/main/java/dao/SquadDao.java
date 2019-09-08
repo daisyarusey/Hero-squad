@@ -20,4 +20,6 @@ public interface SquadDao {
     //DELETE
     void deleteById(int id);
     void clearAllSquads();
+
+    List<Hero> getAllHeroesBySquad(int squadId);
 }

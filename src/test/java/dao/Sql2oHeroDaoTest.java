@@ -22,8 +22,8 @@ public class Sql2oHeroDaoTest {
     }
 
     @Test
-    public void addingCourseSetsId() throws Exception {
-        Hero hero = new Hero ("Iron Fist",37,"glowing hand","weak");
+    public void addingHeroSetsId() throws Exception {
+        Hero hero = setupNewHero();
         int originalHeroId = hero.getId();
         heroDao.add(hero);
         assertNotEquals(originalHeroId, hero.getId()); //how does this work?
@@ -31,11 +31,64 @@ public class Sql2oHeroDaoTest {
 
     @Test
     public void existingHeroesCanBeFoundById() throws Exception {
-        Hero hero = new Hero ("Iron Fist",37,"glowing hand","weak");
+        Hero hero = setupNewHero();
         heroDao.add(hero); //add to dao (takes care of saving)
         Hero foundHero = heroDao.findById(hero.getId()); //retrieve
         assertEquals(hero, foundHero); //should be the same
     }
 
+    @Test
+    public void addedHeroesAreReturnedFromgetAll() throws Exception {
+        Hero hero = setupNewHero();
+        heroDao.add(hero);
+        assertEquals(0, heroDao.getAll().size());
+    }
 
+    @Test
+    public void noHeroesReturnsEmptyList() throws Exception {
+        assertEquals(0, heroDao.getAll().size());
+    }
+
+    @Test
+    public void updateChangesHeroContent() throws Exception {
+        String initialName = "Iron Fist";
+        Hero hero = setupNewHero();
+        heroDao.add(hero);
+
+        heroDao.update(hero.getId(),"Luke Cage", 40,"bullet proof","emotional");
+        Hero updatedHero = heroDao.findById(hero.getId()); //why do I need to refind this?
+        assertNotEquals(initialName, updatedHero.getName());
+    }
+
+    @Test
+    public void deleteByIdDeletesCorrectTask() throws Exception {
+        Hero hero = setupNewHero();
+        heroDao.add(hero);
+        heroDao.deleteById(hero.getId());
+        assertEquals(0, heroDao.getAll().size());
+    }
+
+    @Test
+    public void clearAllClearsAll() throws Exception {
+        Hero hero = setupNewHero();
+        Hero otherHero = new Hero("Luke Cage", 40,"bullet proof","emotional",2);
+        heroDao.add(hero);
+        heroDao.add(otherHero);
+        int daoSize = heroDao.getAll().size();
+        heroDao.clearAllHeroes();
+        assertTrue(daoSize > 0 && daoSize > heroDao.getAll().size());
+    }
+
+    @Test
+    public void squadIdIsReturnedCorrectly() throws Exception {
+        Hero hero = setupNewHero();
+        int originalSquadId = hero.getSquadId();
+        heroDao.add(hero);
+        assertEquals(originalSquadId, heroDao.findById(hero.getId()).getSquadId());
+    }
+
+
+    public Hero setupNewHero(){
+        return new Hero("Iron Fist",37,"glowing hand","weak", 1);
+}
 }

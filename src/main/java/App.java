@@ -20,6 +20,16 @@ public class App {
         Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
         Sql2oSquadDao squadDao = new Sql2oSquadDao(sql2o);
 
+        //get: show all heroes in all squads and show all squads
+        get("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Squad> allSquads =squadDao.getAll();
+            modelAndView("squads", String.valueOf(allSquads));
+            List<Hero> heroes = heroDao.getAll();
+            model.put("heroes", heroes);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //get: delete all heroes
         get("/heroes/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -37,15 +47,7 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        //get: show all heroes in all squads and show all squads
-        get("/", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Squad> allSquads =squadDao.getAll();
-            modelAndView("squads", String.valueOf(allSquads));
-            List<Hero> heroes = heroDao.getAll();
-            model.put("heroes", heroes);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
+
 
 
         get("/heroes/new", (req, res) -> {
@@ -62,8 +64,10 @@ public class App {
             int age = Integer.parseInt(req.queryParams("age"));
             Hero newHero = new Hero(name,age,power,weakness,1);
             heroDao.add(newHero);
-            res.redirect("/");
-            return null;
+            List<Hero> heroes = heroDao.getAll();
+            model.put("heroes",heroes);
+
+            return new ModelAndView(model,"hero-list.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual hero that is nested in a squad
@@ -71,11 +75,18 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int idOfHeroToFind = Integer.parseInt(req.params("hero_id"));
             Hero foundHero = heroDao.findById(idOfHeroToFind);
-            model.put("task", foundHero);
+            model.put("hero", foundHero);
             return new ModelAndView(model, "heroes-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
 
+
+    get("/heroes",(request, response) -> {
+        Map<String, Object> model = new HashMap<>();
+        List<Hero> heroes = heroDao.getAll();
+        model.put("heroes",heroes);
+        return new ModelAndView(model, "hero-list.hbs");
+    },new HandlebarsTemplateEngine());
 
         get("/heroes/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

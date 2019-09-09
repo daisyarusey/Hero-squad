@@ -2,36 +2,35 @@
 <html>
 <head>
     <title>{{#block "title"}}Hero Squad{{/block}}</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/">Home</a></li>
-    <li role="presentation"><a href="/heroes/new">Add a New Hero</a></li>
 
-    <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Squad Menu <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            {{#if heroes}}
-                {{#each heroes}}
-                    <li><a href="/heroes/{{id}}">{{name}}</a></li>
-                {{/each}}
-                <li><a href="/heroes/new">Add a Squad</a></li>
-
-            {{else}}
-                <li><a href="/categories/new">Add a Squad</a></li>
-            {{/if}}
+<nav class="navbar navbar-expand-lg bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand " href="#">Hero Squad</a>
+    <div class=" collapse navbar-collapse" id="navbarTogglerDemo03 ">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
         </ul>
-    </li>
-</ul>
+        <ul class="navbar-nav  mt-2 mt-lg-0  navbar-right ">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/heroes">Heroes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/squads" >Squads</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <!--begin main template-->
-    <div class="page-header">
-        <h1 class="text-center">Welcome to Hero Squad.</h1>
-    </div>
 
     <div class="col-md-12">
         {{#block "content"}}
@@ -41,17 +40,7 @@
 </div>
 <!--end main template-->
 {{#block "footer"}}
-    <footer class="footer">
-        <div class="container">
-            <hr>
-            <p class="text-muted">
-                <a href="/squads/delete">delete all squads & heroes</a><br>
-                <a href="/heroes/delete">delete all heroes</a>
-            </p>
-        </div>
-    </footer>
     </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     </html>
 {{/block}}

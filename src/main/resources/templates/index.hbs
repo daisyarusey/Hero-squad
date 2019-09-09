@@ -1,15 +1,22 @@
 {{#partial "content"}}
+<div class="overlay">
+    <div class="page-header text-center mt-4">
+        <h1 class="mb-4">Welcome to Hero Squad.</h1>
+        <p class="mb-4">Have fun creating squads and heroes.</p>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <a class="btn btn-primary" href="/heroes/new" role="button">Add a Hero</a>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <a class="btn btn-primary" href="/squad/new" role="button">Add a Squad</a>
+        </div>
 
-    <h1>HEROES</h1>
-
-    {{#if heroes}}
-        {{#each heroes }}
-
-            <p>{{ hero.name }} <a href="/heroes/{{id}}">view hero...</a></p>
-        {{/each}}
-    {{else}}
-        <p>No Heroes!</p>
-    {{/if}}
+        <div class="col-md-2"></div>
+    </div>
+</div>
 {{/partial}}
 
 {{> layout.hbs}}

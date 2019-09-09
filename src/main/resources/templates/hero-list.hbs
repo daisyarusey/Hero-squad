@@ -1,0 +1,33 @@
+{{#partial "content"}}
+
+    <h1 class="text-center bg-light mt-2">Heroes</h1>
+    <div class="row">
+    {{#if heroes}}
+        {{#each heroes}}
+
+            <div class="col-sm-4 text-center">
+            <div class="card mb-4">
+                <div class="card-body">
+                <p class="card-title text-center"> <span>{{name}}</span></p>
+                <p class="card-text">Age: {{age}}</p>
+                <p>Super Powers: {{power}}</p>
+                <p>Weakness: {{weakness}}</p>
+                <a href="/heroes/{{id}}" class="btn btn-primary">See more</a>
+                </div>
+            </div>
+            </div>
+
+        {{/each}}
+        </div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <a class="btn btn-primary" href="/heroes/delete">DELETE ALL HEROES</a>
+    </div>
+</div>
+    {{else}}
+        <p class="font-weight-bold text-dark">No Heroes yet!</p>
+    {{/if}}
+    </div>
+{{/partial}}
+{{>layout.hbs}}

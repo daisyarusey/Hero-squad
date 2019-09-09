@@ -3,17 +3,15 @@
 {{/partial}}
 {{#partial "content"}}
 
-    <h5>Name:</h5>
-    <p>{{ hero.name }}</p>
-    <h5>Created At:</h5>
-    <p> {{ hero.createdAt }}</p>
+<div class="card">
+    <p class="card-text">{{name}}</p>
     <div class="display">
         <div><a href="/heroes/{{hero.id}}/update" class="btn btn-half">Edit this hero</a></div>
         <div><a href="/squad" class="btn btn-half">Click To add to squad</a></div>
         <div><a href="/heroes/{{hero.id}}/delete" class="btn btn-half">DELETE this hero (no undo)</a></div>
 
     </div>
-
+</div>
 
 
 

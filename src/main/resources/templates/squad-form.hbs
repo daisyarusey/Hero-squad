@@ -11,16 +11,24 @@
             <button type="submit" class="btn btn-default">Go!</button>
         </form>
     {{else}}
-        <h1>Add a new Squad!</h1>
-        <form action="/squads" method="post">
-            <label for="name">Squad Name</label>
-            <input id="name" name="name" type="text">
-            <label for="maxSize">Squad Maximum Size</label>
-            <input type="number" name="maxSize" id="maxSize">
-            <label for="cause"> Squad Cause</label>
-            <input type="text" id="cause" name="cause">
-            <button type="submit" class="btn btn-default">Go!</button>
+        <h1 class="text-white">Add a new Squad!</h1>
+        <div class="formClass">
+        <form action="/squads" method="post" class="form">
+            <div class="md-form">
+                <label id="h1-1" for="name">Squad Name</label>
+                <input id="name" name="name" type="text" class="form-control" required>
+            </div>
+            <div class="md-form">
+                <label id="h1-1" for="maxSize">Maximum Size</label>
+                <input id="maxSize" name="maxSize" type="number" class="form-control" required><br>
+            </div>
+            <div class="md-form">
+                <label id="h1-1" for="cause">Squad Cause</label>
+                <input id="cause" name="cause" type="text" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
         </form>
+        </div>
     {{/if}}
 {{/partial}}
 

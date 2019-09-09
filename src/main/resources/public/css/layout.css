@@ -1,8 +1,9 @@
 body{
- background-image: url(/images/bg.jpeg);
+ background-image: url(/images/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-po
+    height:100%;
+    width:100%;
 }
 .overlay{
 background-color: rgb(0,0,0);
@@ -21,4 +22,8 @@ background-color: rgb(0,0,0);
   font-weight: bold;
   border: 3px solid #f1f1f1;
    padding: 20px;
+}
+
+#fontsize{
+font-size :30px;
 }

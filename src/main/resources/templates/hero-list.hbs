@@ -12,7 +12,9 @@
                 <p class="card-text">Age: {{age}}</p>
                 <p>Super Powers: {{power}}</p>
                 <p>Weakness: {{weakness}}</p>
-                <a href="/heroes/{{id}}" class="btn btn-primary">See more</a>
+                    <a  href="/heroes/{{hero.id}}/delete" class="btn btn-primary">Delete</a>
+                    <a href="/heroes/{{hero.id}}/update" class="btn btn-primary">Update</a>
+                    <a  href="/squad" class="btn btn-primary">Add to a squad</a>
                 </div>
             </div>
             </div>
@@ -20,14 +22,17 @@
         {{/each}}
         </div>
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <a class="btn btn-primary" href="/heroes/delete">DELETE ALL HEROES</a>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        <a class="btn btn-primary" href="/heroes/delete">Delete all heroes</a>
     </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary"href="/heroes/new">Add another hero</a>
+    </div>
+    <div class="col-md-3"></div>
 </div>
     {{else}}
-        <p class="font-weight-bold text-dark">No Heroes yet!</p>
+        <a class="pl-5 text-white" id="fontsize" href="/heroes/new">No Heroes yet! Click to add a Hero</a>
     {{/if}}
-    </div>
 {{/partial}}
 {{>layout.hbs}}

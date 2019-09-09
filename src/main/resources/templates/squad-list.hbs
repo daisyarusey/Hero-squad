@@ -1,0 +1,37 @@
+{{#partial "content"}}
+
+    <h1 class="text-center bg-light mt-2">Squads</h1>
+    <div class="row">
+    {{#if squads}}
+        {{#each squad}}
+
+                <div class="col-sm-4 text-center">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-title text-center"> <span>{{name}}</span></p>
+                            <p class="card-text">Maximum Size: {{maxSize}}</p>
+                            <p>Cause: {{cause}}</p>
+                            <a  href="/squad/{{squad.id}}/delete" class="btn btn-primary">Delete</a>
+                            <a href="/squad/{{squad.id}}/update" class="btn btn-primary">Update</a>
+                            <a  href="/heroes" class="btn btn-primary">Add heroes</a>
+                        </div>
+                    </div>
+                </div>
+
+        {{/each}}
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <a class="btn btn-primary" href="/squads/delete">Delete all squads</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-primary"href="/squad/new">Add another squad</a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    {{else}}
+        <a class="pl-5 text-white" id="fontsize" href="/squad/new">No squads yet! Click to add</a>
+    {{/if}}
+{{/partial}}
+{{>layout.hbs}}

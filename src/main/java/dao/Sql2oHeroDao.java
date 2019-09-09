@@ -62,6 +62,34 @@ public class Sql2oHeroDao implements HeroDao {
     }
 
     @Override
+    public void assignSquad(int id, int squadId) {
+        String sql = "UPDATE heroes SET (squad_id) = (:squadId) WHERE id=:id;";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .addParameter("squadId", squadId)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println("SQUAD NOT ASSIGNED:"+ex);
+        }
+
+    }
+
+    @Override
+    public void dropFromSquad(int id) {
+        String sql = "UPDATE heroes SET (squad_id) = 0 WHERE id=:id;";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println("SQUAD NOT ASSIGNED:"+ex);
+        }
+    }
+
+
+
+    @Override
     public void deleteById(int id) {
         String sql = "DELETE from heroes WHERE id=:id";
         try (Connection con = sql2o.open()) {

@@ -31,7 +31,7 @@ public class App {
         //get: delete an individual hero
         get("/squads/:squad_id/heroes/hero_id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfHeroToDelete = Integer.parseInt(req.params("task_id"));
+            int idOfHeroToDelete = Integer.parseInt(req.params("hero_id"));
             heroDao.deleteById(idOfHeroToDelete);
             res.redirect("/");
             return null;
@@ -112,7 +112,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Squad> squads = squadDao.getAll(); //refresh list of links for navbar
             model.put("squads", squads);
-            return new ModelAndView(model, "squad-form.hbs"); //new
+            return new ModelAndView(model, "squad-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 

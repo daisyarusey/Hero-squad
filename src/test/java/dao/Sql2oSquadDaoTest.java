@@ -35,7 +35,7 @@ public class Sql2oSquadDaoTest {
     }
 
     @Test
-    public void addingCategorySetsId() throws Exception {
+    public void addingSquadSetsId() throws Exception {
         Squad squad = setupNewSquad();
         int originalSquadId = squad.getId();
         squadDao.add(squad);

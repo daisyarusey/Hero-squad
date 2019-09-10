@@ -24,3 +24,4 @@ After cloning to your local machine navigate to the folder you cloned into and o
 * [Spark]() - Framework
 
 ## Copyright and licence
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

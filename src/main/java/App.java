@@ -36,28 +36,29 @@ public class App {
         Sql2oSquadDao squadDao = new Sql2oSquadDao(sql2o);
 
         //get: show all heroes in all squads and show all squads
-        get("/", (req, res) -> {
+        get("/",(request, response) ->{
             Map<String, Object> model = new HashMap<>();
-            List<Squad> allSquads =squadDao.getAll();
-            modelAndView("squads", String.valueOf(allSquads));
-            List<Hero> heroes = heroDao.getAll();
-            model.put("heroes", heroes);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
+            return new ModelAndView(model,"index.hbs");
+
+        },new HandlebarsTemplateEngine());
+
+
 
         //get: delete all heroes
-        get("/heroes/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            heroDao.clearAllHeroes();
-            res.redirect("/");
-            return null;
-        }, new HandlebarsTemplateEngine());
+//        get("/heroes/delete", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            heroDao.clearAllHeroes();
+//            res.redirect("/");
+//            return null;
+//        }, new HandlebarsTemplateEngine());
 
         //get: delete an individual hero
-        get("/heroes/:id/delete", (req, res) -> {
+        get("/hero/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfHeroToDelete = Integer.parseInt(req.params("id"));
             heroDao.deleteById(idOfHeroToDelete);
+            List<Hero> heroes = heroDao.getAll();
+            model.put("heroes", heroes);
             return new ModelAndView(model,"hero-list.hbs");
 
         }, new HandlebarsTemplateEngine());
@@ -95,6 +96,16 @@ public class App {
         return new ModelAndView(model, "hero-list.hbs");
     },new HandlebarsTemplateEngine());
 
+get("/heroes/:id",(request, response) ->{
+    Map<String, Object> model = new HashMap<>();
+    int heroId = Integer.parseInt(request.params("id"));
+    Hero hero = heroDao.findById(heroId);
+    List<Hero> heroes = heroDao.getAll();
+    model.put("hero", hero);
+    model.put("heroes",heroes);
+    return new ModelAndView(model,"hero-detail.hbs");
+
+},new HandlebarsTemplateEngine());
 
         get("/heroes/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

@@ -143,9 +143,18 @@ public class App {
 
         get("/squads",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Squad> squad = squadDao.getAll();
-            model.put("squad",squad);
+            List<Squad> squads = squadDao.getAll();
+            model.put("squads",squads);
             return new ModelAndView(model, "squad-list.hbs");
         },new HandlebarsTemplateEngine());
+
+        //get: delete all squads
+        get("/squads/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            squadDao.clearAllSquads();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 }

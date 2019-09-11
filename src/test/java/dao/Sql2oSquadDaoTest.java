@@ -82,23 +82,9 @@ public class Sql2oSquadDaoTest {
         assertTrue(daoSize > 0 && daoSize > squadDao.getAll().size());
     }
 
-    @Test
-    public void getAllHeroesBySquadReturnsHeroesCorrectly() throws Exception {
-        Squad squad = setupNewSquad();
-        squadDao.add(squad);
-        int squadId = squad.getId();
-        Hero newHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
-        Hero otherHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
-        Hero thirdHero = new Hero("Iron Fist",50,"glowing fist","weak",squadId);
-        heroDao.add(newHero);
-        heroDao.add(otherHero);
-        assertEquals(2, squadDao.getAllHeroesBySquad(squadId).size());
-       assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(newHero));
-  assertTrue(squadDao.getAllHeroesBySquad(squadId).contains(otherHero));
-  assertFalse(squadDao.getAllHeroesBySquad(squadId).contains(thirdHero)); //things are accurate!
-}
 
-    // helper method
+
+
     public Squad setupNewSquad(){
         return new Squad("Defenders",5,"defend");
     }

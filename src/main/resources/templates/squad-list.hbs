@@ -3,7 +3,7 @@
     <h1 class="text-center bg-light mt-2">Squads</h1>
     <div class="row">
     {{#if squads}}
-        {{#each squad}}
+        {{#each squads}}
 
                 <div class="col-sm-4 text-center">
                     <div class="card mb-4">
@@ -11,8 +11,8 @@
                             <p class="card-title text-center"> <span>{{name}}</span></p>
                             <p class="card-text">Maximum Size: {{maxSize}}</p>
                             <p>Cause: {{cause}}</p>
-                            <a  href="/squad/{{squad.id}}/delete" class="btn btn-primary">Delete</a>
-                            <a href="/squad/{{squad.id}}/update" class="btn btn-primary">Update</a>
+                            <a  href="/squad/{{id}}/delete" class="btn btn-primary">Delete</a>
+                            <a href="/squad/{{id}}/update" class="btn btn-primary">Update</a>
                             <a  href="/heroes" class="btn btn-primary">Add heroes</a>
                         </div>
                     </div>

@@ -1,0 +1,23 @@
+{{#partial "content"}}
+    <div class="overlay" style="width:50%">
+        <div class="page-header mt-4">
+            <h1>Squad {{squad.name}} details</h1>
+        </div>
+        <p>Name: {{squad.name}}</p>
+        <p>Maximum size: {{squad.maxSize}}</p>
+        <p>Squad Cause: {{squad.cause}}</p>
+        <p><b>Heroes</b></p>
+        <ul>
+            {{#if heroes}}
+            {{#each heroes}}
+                <li>{{name}}</li>
+            {{/each}}
+            {{else}}
+                <p>No heroes</p>
+            {{/if}}
+        </ul>
+        <a  href="/squad/{{squad.id}}/delete" class="btn btn-primary">Delete</a>
+        <a href="/squad/{{squad.id}}/edit" class="btn btn-primary">Update</a>
+    </div>
+{{/partial}}
+{{>layout.hbs}}

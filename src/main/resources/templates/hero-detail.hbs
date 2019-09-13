@@ -1,23 +1,16 @@
 {{#partial "content"}}
-
-
-    <div class="row">
-
-
-                <div class="col-sm-4 text-center">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <p class="card-title text-center"> <span>{{name}}</span></p>
-                            <p class="card-text">Age: {{hero.age}}</p>
-                            <p>Super Powers: {{hero.power}}</p>
-                            <p>Weakness: {{hero.weakness}}</p>
-                            <a  href="/hero/{{hero.id}}/delete" class="btn btn-primary">Delete</a>
-                            <a href="/heroes/{{hero.id}}/update" class="btn btn-primary">Update</a>
-                            <a  href="/squad" class="btn btn-primary">Add to a squad</a>
-                        </div>
-                    </div>
-                </div>
-
+    <div class="overlay" style="width:50%">
+        <div class="page-header mt-4">
+             <h1>Hero {{hero.name}} details</h1>
+        </div>
+        <p>Name:{{hero.name}}</p>
+        <p>Age: {{hero.age}}</p>
+        <p>Power: {{hero.power}}</p>
+        <p>Weakness: {{hero.weakness}}</p>
+        <p>Squad: {{squad.name}}</p>
+        <a  href="/hero/{{hero.id}}/delete" class="btn btn-primary">Delete</a>
+        <a href="/hero/{{hero.id}}/edit" class="btn btn-primary">Update</a>
+    </div>
 
 {{/partial}}
 {{>layout.hbs}}

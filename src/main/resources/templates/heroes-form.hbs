@@ -5,22 +5,30 @@
 {{/partial}}
 
 {{#partial "content"}}
-    {{#if editHero}}
+    {{#if editSquad}}
         <h1 class="text-white">Edit your Hero's entries!</h1>
         <div class="formClass">
-        <form action="/heroes/{{editHero.id}}/update" method="post" class="form-group">
+        <form action="/heroes/{{hero.id}}" method="post" class="form-group">
 
             <label for="name">Name</label>
-            <input id="name" name="name" type="text" value="{{editHero.name}}" class="form-control"><br>
+            <input id="name" name="name" type="text" value="{{hero.name}}" class="form-control"><br>
 
             <label for="age">Age</label>
-            <input id="age" name="age" type="text" value="{{editHero.age}}"class="form-control"><br>
+            <input id="age" name="age" type="text" value="{{hero.age}}"class="form-control"><br>
 
             <label for="power">Powers</label>
-            <input id="specialPowers" name="power" type="text" value="{{editHero.powers}}" class="form-control"><br>
+            <input id="specialPowers" name="power" type="text" value="{{hero.power}}" class="form-control"><br>
 
             <label for="weakness">Weakness</label>
-            <input id="weakness" name="weakness" type="text" value="{{editHero.weakness}}" class="form-control"><br>
+            <input id="weakness" name="weakness" type="text" value="{{hero.weakness}}" class="form-control"><br>
+            <label for="squadId">Squad</label>
+            <select class="form-control" name="squadId" id="squadId" required>
+                {{#each squads}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+
+
 
             <button type="submit" class="btn btn-primary" >Update Hero</button>
         </form>
@@ -47,6 +55,15 @@
                 <label id="h1-1" for="weakness">Weakness</label>
                 <input id="weakness" name="weakness" type="text" class="form-control" required>
             </div>
+                <div class="md-form">
+                    <label for="squadId">Squad</label>
+                    <select class="form-control" name="squadId" id="squadId" required>
+                        {{#each squads}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+<!--                    <a href="/squad/new"><p class="text white">Create your own squad</p></a>-->
+                </div>
             <button type="submit"  class="btn btn-primary mt-4">Add Hero</button>
         </form>
 

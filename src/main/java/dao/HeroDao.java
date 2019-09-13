@@ -20,11 +20,6 @@ public interface HeroDao {
 
     // DELETE
 
-    // UPDATE
-    void assignSquad(int id, int squadId);
-
-    void dropFromSquad(int id);
-
     void deleteById(int id);
 
     void clearAllHeroes();
